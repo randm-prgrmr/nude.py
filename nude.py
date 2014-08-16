@@ -32,7 +32,10 @@ class Nude(object):
             self.image = path_or_io
         else:
             self.image = Image.open(path_or_io)
-        self.image.thumbnail((128,128))
+        #if image isnt already a thumbnail, make it a thumbnail, for speed
+        tempsize = self.image.size
+        if tempsize[0]>200 and tempsize[1]>200:
+            self.image.thumbnail((200,200))
         self.skin_map = []
         self.skin_regions = []
         self.detected_regions = []
