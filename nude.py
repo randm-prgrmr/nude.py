@@ -32,6 +32,7 @@ class Nude(object):
             self.image = path_or_io
         else:
             self.image = Image.open(path_or_io)
+        self.image.thumbnail((128,128))
         self.skin_map = []
         self.skin_regions = []
         self.detected_regions = []
